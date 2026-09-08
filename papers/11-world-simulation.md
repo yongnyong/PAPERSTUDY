@@ -14,14 +14,8 @@
 
 ## 2. 아키텍처 — 통합 Flow 기반 모델
 
-```mermaid
-flowchart LR
-    TEXT["텍스트 프롬프트"] --> REASON["Cosmos-Reason1<br/>(Physical AI 전용 VLM, 텍스트 인코더 역할)"]
-    IMG["시작 이미지(옵션)"] --> BACKBONE
-    VID["시작 비디오(옵션)"] --> BACKBONE
-    REASON --> BACKBONE["통합 Transformer 백본<br/>(flow 기반 diffusion)"]
-    BACKBONE --> OUT["미래 비디오<br/>(최대 30초, 시공간 일관성 유지)"]
-```
+<img src="../assets/diagrams/11-world-simulation-1.svg" alt="diagram" width="720">
+
 
 - **하나의 flow 기반 diffusion 프레임워크**로 Text2World(텍스트만으로 세계 생성), Image2World(시작 이미지로부터 이후 전개 예측), Video2World(비디오 앞부분을 보고 이어지는 미래 예측)를 **모두 같은 백본**에서 처리
 - 텍스트 인코더로 범용 언어모델 대신 **Cosmos-Reason1**(Physical AI 특화 reasoning VLM)을 사용 — "컵이 테이블에서 떨어지면 깨진다" 같은 물리적 상식을 반영한 grounding을 제공해, 생성되는 미래 비디오가 지시문의 의도와 물리적으로 더 정합적이도록 유도

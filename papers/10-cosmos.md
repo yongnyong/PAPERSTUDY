@@ -21,14 +21,8 @@
 
 ## 2. 플랫폼 구성 요소
 
-```mermaid
-flowchart LR
-    RAW["원본 비디오<br/>2억 개(2억 clip), 3,500만 시간"] --> CURATE["7단계 큐레이션 파이프라인"]
-    CURATE --> TOK["Cosmos Tokenizer<br/>(causal, 연속/이산 지원)"]
-    TOK --> PRETRAIN["사전학습된 WFM<br/>(Diffusion형 / Autoregressive형)"]
-    PRETRAIN --> POST["Post-training<br/>(로봇 조작·자율주행·내비게이션 특화)"]
-    POST --> USE["활용: synthetic 데이터 생성,<br/>정책 사전 평가, world simulation"]
-```
+<img src="../assets/diagrams/10-cosmos-1.svg" alt="diagram" width="720">
+
 
 ### 2.1 비디오 큐레이션 파이프라인 (7단계)
 

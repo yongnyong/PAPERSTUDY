@@ -19,21 +19,8 @@ EMMA를 포함해 대부분의 End-to-End 자율주행 모델은 궤적을 잘 �
 
 ## 2. 아키텍처 개요
 
-```mermaid
-flowchart TB
-    CAM["카메라 영상"] --> VFM["Vision Foundation Model<br/>(사전학습, 공간-의미적 prior 제공)"]
-    VFM --> FEAT["장면 피처<br/>(공간-의미 정보 내재)"]
+<img src="../assets/diagrams/13-world4drive-1.svg" alt="diagram" width="720">
 
-    FEAT --> INTENT["Intention 추출<br/>(예: 직진/좌회전/우회전 등 다중 모드)"]
-    INTENT --> CANDS["의도별 다중 후보 궤적 생성<br/>τ₁, τ₂, ..., τ_K"]
-
-    FEAT --> WORLD["Latent World Model"]
-    CANDS --> WORLD
-    WORLD --> PRED["각 후보 궤적 실행 시<br/>예측되는 미래 latent 상태"]
-
-    PRED --> SELECT["World Model Selector<br/>(각 후보를 평가·순위화)"]
-    SELECT --> BEST["최종 선택된 주행 궤적"]
-```
 
 ### 2.1 Vision Foundation Model 기반 장면 피처
 

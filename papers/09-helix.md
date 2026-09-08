@@ -18,22 +18,8 @@ GR00T N1이 "느린 VLM + 빠른 diffusion" 구조의 연구적 타당성을 보
 
 ## 2. 아키텍처 — 훨씬 가벼운 Dual-System
 
-```mermaid
-flowchart TB
-    subgraph S2["System 2 — 느린 장면 이해"]
-        VLM["7B 오픈소스 VLM<br/>(인터넷 규모 사전학습)"]
-    end
-    subgraph S1["System 1 — 빠른 실시간 제어 (별도 프로세스, 200Hz)"]
-        POLICY["80M 파라미터 Transformer<br/>(visuomotor policy)"]
-    end
+<img src="../assets/diagrams/09-helix-1.svg" alt="diagram" width="720">
 
-    IMG["카메라 이미지"] --> VLM
-    INST["자연어 지시문"] --> VLM
-    VLM --> LATENT["latent 표현<br/>(장면·과제 이해)"]
-    LATENT -.비동기 전달.-> POLICY
-    IMG --> POLICY
-    POLICY --> ACT["상체 전체 연속 제어<br/>양팔·손가락·손목·몸통·머리, 200Hz"]
-```
 
 - **System 2**: 인터넷 규모로 사전학습된 **7B 오픈소스/오픈웨이트 VLM**. 장면 이해와 언어 이해를 담당하는, 상대적으로 느린 모듈
 - **System 1**: **단 80M 파라미터**의 작은 Transformer. System 2가 만든 latent 표현을 비동기적으로 받아, 이미지 입력과 결합해 실시간으로 상체 전체의 연속 제어값을 생성
