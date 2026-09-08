@@ -18,8 +18,8 @@ VLA(Vision-Language-Action) 파운데이션 모델 + 자율주행/모빌리티�
 - [x] [09. Helix](papers/09-helix.md) (Figure AI) (2025.02)
 
 ### Phase 3 — World Model
-- [ ] 10. Cosmos World Foundation Model Platform for Physical AI (2025.01)
-- [ ] 11. World Simulation with Video Foundation Models for Physical AI (2025.11)
+- [x] [10. Cosmos](papers/10-cosmos.md) — World Foundation Model Platform for Physical AI (2025.01)
+- [x] [11. World Simulation with Video Foundation Models for Physical AI](papers/11-world-simulation.md) (2025.11)
 
 ### Phase 4 — 자율주행/모빌리티 응용
 - [ ] 12. EMMA — End-to-End Multimodal Model for Autonomous Driving (2024.10)
