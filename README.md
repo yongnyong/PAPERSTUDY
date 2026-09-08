@@ -11,9 +11,9 @@ VLA(Vision-Language-Action) 파운데이션 모델 + 자율주행/모빌리티�
 - [x] [04. OpenVLA](papers/04-openvla.md) — An Open-Source Vision-Language-Action Model (2024.06)
 
 ### Phase 2 — 최신 SOTA VLA (2025)
-- [ ] 05. π0 — A Vision-Language-Action Flow Model for General Robot Control (2024.10)
-- [ ] 06. π0.5 — a VLA with Open-World Generalization (2025.04)
-- [ ] 07. π*0.6 — a VLA That Learns From Experience (2025.11)
+- [x] [05. π0](papers/05-pi0.md) — A Vision-Language-Action Flow Model for General Robot Control (2024.10)
+- [x] [06. π0.5](papers/06-pi05.md) — a VLA with Open-World Generalization (2025.04)
+- [x] [07. π*0.6](papers/07-pi06.md) — a VLA That Learns From Experience (2025.11)
 - [ ] 08. GR00T N1 — An Open Foundation Model for Generalist Humanoid Robots (2025.03)
 - [ ] 09. Helix (Figure AI) (2025.02)
 
