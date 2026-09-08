@@ -22,8 +22,8 @@ VLA(Vision-Language-Action) 파운데이션 모델 + 자율주행/모빌리티�
 - [x] [11. World Simulation with Video Foundation Models for Physical AI](papers/11-world-simulation.md) (2025.11)
 
 ### Phase 4 — 자율주행/모빌리티 응용
-- [ ] 12. EMMA — End-to-End Multimodal Model for Autonomous Driving (2024.10)
-- [ ] 13. World4Drive — Intention-aware Physical Latent World Model (2025.07)
+- [x] [12. EMMA](papers/12-emma.md) — End-to-End Multimodal Model for Autonomous Driving (2024.10)
+- [x] [13. World4Drive](papers/13-world4drive.md) — Intention-aware Physical Latent World Model (2025.07)
 
 ### Phase 5 — 서베이 (지형 정리용, 필요시)
 - [ ] 14. Vision-Language-Action Models: Concepts, Progress, Applications and Challenges (2025.05)
