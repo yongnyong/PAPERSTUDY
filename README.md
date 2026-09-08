@@ -6,7 +6,7 @@ VLA(Vision-Language-Action) 파운데이션 모델 + 자율주행/모빌리티�
 
 ### Phase 1 — VLA 계보 (기초)
 - [x] [01. RT-1](papers/01-rt1.md) — Robotics Transformer for Real-World Control at Scale (2022.12)
-- [ ] 02. RT-2 — Vision-Language-Action Models Transfer Web Knowledge to Robotic Control (2023.07)
+- [x] [02. RT-2](papers/02-rt2.md) — Vision-Language-Action Models Transfer Web Knowledge to Robotic Control (2023.07)
 - [ ] 03. Octo — An Open-Source Generalist Robot Policy (2023.12)
 - [ ] 04. OpenVLA — An Open-Source Vision-Language-Action Model (2024.06)
 
