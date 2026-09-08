@@ -26,8 +26,8 @@ VLA(Vision-Language-Action) 파운데이션 모델 + 자율주행/모빌리티�
 - [x] [13. World4Drive](papers/13-world4drive.md) — Intention-aware Physical Latent World Model (2025.07)
 
 ### Phase 5 — 서베이 (지형 정리용, 필요시)
-- [ ] 14. Vision-Language-Action Models: Concepts, Progress, Applications and Challenges (2025.05)
-- [ ] 15. The Role of World Models in Shaping Autonomous Driving: A Comprehensive Survey (2025.02)
+- [x] [14. VLA 서베이](papers/14-survey-vla.md) — Concepts, Progress, Applications and Challenges (2025.05)
+- [x] [15. 자율주행 World Model 서베이](papers/15-survey-world-model-ad.md) — The Role of World Models in Shaping Autonomous Driving (2025.02)
 
 ## 노트 작성 형식
 각 논문 노트는 다음 구조를 따릅니다:
