@@ -46,7 +46,16 @@ TokenLearner로 토큰 수 압축([RT-1](01-rt1.md)), flow matching의 적은 OD
 
 ## 4. 정리 — 지금까지 읽은 흐름의 위치
 
-<img src="../assets/diagrams/14-survey-vla-1.svg" alt="diagram" width="720">
-
+```mermaid
+flowchart LR
+    A["전용 소형 아키텍처<br/>RT-1"] --> B["대형 VLM 재활용<br/>RT-2"]
+    B --> C["오픈소스화 + 모듈성<br/>Octo, OpenVLA"]
+    C --> D["연속 action 생성<br/>π0"]
+    D --> E["계층적 추론 + 일반화<br/>π0.5"]
+    E --> F["RL 기반 지속 개선<br/>π*0.6"]
+    C --> G["Dual-system 휴머노이드<br/>GR00T N1, Helix"]
+    G -.synthetic data.-> H["World Foundation Model<br/>Cosmos"]
+    H -.응용 확장.-> I["자율주행<br/>EMMA, World4Drive"]
+```
 
 **다음**: [15. The Role of World Models in Shaping Autonomous Driving](15-survey-world-model-ad.md) — 자율주행에 특화된 World Model 서베이로 마무리.

@@ -39,8 +39,27 @@ DWM은 "현재 주행 상황이 주어졌을 때 (행동에 따라) 장면이 �
 
 ## 5. Physical AI 전체 학습 여정 마무리
 
-<img src="../assets/diagrams/15-survey-world-model-ad-1.svg" alt="diagram" width="720">
-
+```mermaid
+flowchart TB
+    subgraph ACTION["행동 생성 축 (VLA)"]
+        direction LR
+        RT1["RT-1"] --> RT2["RT-2"] --> OCTO["Octo"] --> OVLA["OpenVLA"] --> PI0["π0"] --> PI05["π0.5"] --> PI06["π*0.6"]
+        OVLA --> GROOT["GR00T N1"]
+        OVLA --> HELIX["Helix"]
+    end
+    subgraph WORLD["세계 예측 축 (WFM/DWM)"]
+        direction LR
+        COSMOS["Cosmos"] --> COSMOS2["Cosmos-Predict2.5"]
+    end
+    subgraph DRIVE["자율주행 응용"]
+        direction LR
+        EMMA_["EMMA"]
+        W4D["World4Drive"]
+    end
+    GROOT -.synthetic data 필요.-> COSMOS
+    COSMOS2 -.멀티뷰 특화.-> DRIVE
+    ACTION -.공통 문제의식: action 표현,<br/>실시간성, 일반화.-> DRIVE
+```
 
 RT-1의 "action을 discrete bin으로"부터 시작해, π0의 flow matching, GR00T의 dual-system, Cosmos의 world simulation, EMMA/World4Drive의 자율주행 응용까지 — 결국 Physical AI 전체는 **"관측에서 행동으로" 가는 정책(VLA)** 과 **"행동에서 결과로" 가는 시뮬레이터(WFM)** 라는 두 축이 서로의 데이터와 평가 도구를 제공하며 함께 발전하는 구조라는 게 이번 15편의 논문을 통해 확인한 큰 그림이다.
 

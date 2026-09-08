@@ -21,8 +21,21 @@ OpenVLA의 목표: **완전히 공개된 7B급 VLM**을 백본으로 써서 (1) 
 
 OpenVLA는 처음부터 설계하지 않고, 기존 오픈소스 VLM인 **Prismatic-7B**를 그대로 백본으로 채택한다.
 
-<img src="../assets/diagrams/04-openvla-1.svg" alt="diagram" width="720">
+```mermaid
+flowchart LR
+    IMG["로봇 카메라 이미지"] --> SIGLIP["SigLIP 인코더"]
+    IMG --> DINO["DINOv2 인코더"]
+    SIGLIP --> FUSE["채널 방향 concat<br/>(fused visual features, 600M)"]
+    DINO --> FUSE
+    FUSE --> PROJ["2-layer MLP projector<br/>→ 언어 임베딩 공간으로 투영"]
 
+    INST["자연어 지시문"] --> TOKEN["텍스트 토큰화"]
+
+    PROJ --> LLAMA
+    TOKEN --> LLAMA["Llama-2 7B<br/>32 layers, hidden 4096, 32 heads"]
+
+    LLAMA --> OUT["7차원 action<br/>(각 256-bin 이산화,<br/>vocabulary 최저빈도 토큰 재사용)"]
+```
 
 ### 2.1 비전 인코더 — DINOv2 + SigLIP 융합
 

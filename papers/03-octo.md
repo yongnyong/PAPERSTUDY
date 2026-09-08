@@ -21,8 +21,25 @@ Octo의 목표: **완전히 오픈소스**이면서, **다양한 로봇의 관�
 
 Octo는 **(1) 입력 토크나이저, (2) Transformer 백본, (3) readout head** 세 부분을 분리해, 각 부분을 독립적으로 교체/추가할 수 있게 설계했다.
 
-<img src="../assets/diagrams/03-octo-1.svg" alt="diagram" width="720">
+```mermaid
+flowchart LR
+    subgraph TOK["입력 토크나이저 (교체 가능)"]
+        LANG["언어 지시문<br/>→ 사전학습 T5 인코더"]
+        GOAL["목표 이미지(옵션)"]
+        OBS["관측 이미지(들)<br/>→ 얕은 CNN 스택"]
+    end
 
+    LANG --> TASK["Task 토큰"]
+    GOAL --> TASK
+    OBS --> OBSTOK["Observation 토큰<br/>(타임스텝별)"]
+
+    TASK --> TR
+    OBSTOK --> TR["Transformer 백본<br/>block-wise causal masking"]
+
+    TR --> READOUT["Readout 토큰<br/>(학습 가능한 압축 임베딩)"]
+    READOUT --> HEAD["Diffusion Action Head<br/>(가벼운 MLP, 교체 가능)"]
+    HEAD --> ACTS["action chunk<br/>(연속값, 여러 스텝)"]
+```
 
 ### 2.1 토크나이저
 

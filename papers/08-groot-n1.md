@@ -18,8 +18,23 @@
 
 ## 2. 아키텍처 — Dual-System 구조
 
-<img src="../assets/diagrams/08-groot-n1-1.svg" alt="diagram" width="720">
+```mermaid
+flowchart TB
+    subgraph SYS2["System 2 — 느린 추론 (~10Hz, L40 GPU)"]
+        IMG["카메라 이미지"] --> EAGLE["NVIDIA Eagle-2<br/>(사전학습 VLM)"]
+        INST["자연어 지시문"] --> EAGLE
+        EAGLE --> CTX["환경/과제 이해 토큰<br/>(VLM 출력 임베딩)"]
+    end
 
+    subgraph SYS1["System 1 — 빠른 실행 (~120Hz)"]
+        STATE["로봇 proprioceptive state<br/>(embodiment별 인코더)"]
+        CTX -.cross-attention.-> DIT["Diffusion Transformer<br/>(action flow-matching)"]
+        STATE --> DIT
+        DIT --> DEC["embodiment별 디코더"]
+    end
+
+    DEC --> ACT["모터 명령<br/>(고자유도 전신 action)"]
+```
 
 ### 2.1 System 2 — 시각-언어 추론 모듈
 
@@ -40,8 +55,13 @@
 
 로봇 데이터는 절대적으로 부족하다는 문제를, GR00T N1은 **"데이터 피라미드"**로 해결한다 — 아래로 갈수록 양은 많지만 로봇 특화도가 낮고, 위로 갈수록 양은 적지만 정확히 그 로봇에 특화된 데이터다.
 
-<img src="../assets/diagrams/08-groot-n1-2.svg" alt="diagram" width="720">
-
+```mermaid
+flowchart TB
+    TOP["실제 로봇 궤적<br/>(가장 적음, embodiment 특화도 최고)"]
+    MID["시뮬레이션 궤적<br/>(Isaac Sim) + 비디오 생성모델의 합성 궤적"]
+    BOTTOM["웹 규모 인간 행동 비디오<br/>(가장 많음, embodiment 특화도 최저)"]
+    TOP --- MID --- BOTTOM
+```
 
 - **최하단(웹/인간 비디오)**: action label이 없는 방대한 인간 행동 영상. **학습된 latent-action codebook**과 **inverse dynamics model(IDM)**을 이용해 "이 영상에서 어떤 동작이 일어났을지"에 대한 **의사(pseudo) action label**을 추론해 학습에 사용 — 로봇으로 한 번도 수집되지 않은 지식(사물 조작 상식)까지 흡수하는 통로
 - **중간(합성 데이터)**: NVIDIA Isaac Sim으로 생성한 시뮬레이션 궤적, 그리고 비디오 생성 모델([Cosmos](10-cosmos.md) 등)로 만든 synthetic trajectory — real robot teleoperation 없이도 대량의 다양한 시나리오를 값싸게 확보
