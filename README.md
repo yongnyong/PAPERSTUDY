@@ -29,6 +29,10 @@ VLA(Vision-Language-Action) 파운데이션 모델 + 자율주행/모빌리티�
 - [x] [14. VLA 서베이](papers/14-survey-vla.md) — Concepts, Progress, Applications and Challenges (2025.05)
 - [x] [15. 자율주행 World Model 서베이](papers/15-survey-world-model-ad.md) — The Role of World Models in Shaping Autonomous Driving (2025.02)
 
+### Phase 6 — 최신 동향 (2026)
+- [x] [16. π0.7](papers/16-pi07.md) — a Steerable Generalist Robotic Foundation Model with Emergent Capabilities (2026.04)
+- [x] [17. Kairos](papers/17-kairos.md) — A Regret-Aware Native World-Action Model Stack for Physical AI (2026.06)
+
 ## 노트 작성 형식
 각 논문 노트는 다음 구조를 따릅니다:
 1. 한 줄 요약 / 메타정보
